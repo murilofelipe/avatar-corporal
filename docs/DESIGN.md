@@ -51,3 +51,11 @@ depende das 96 imagens finais (enquadramento fixo é pré-requisito). Quando
 chegarem: ajustar `cx/cy/radius` de cada região por gênero à mão, conferindo o
 alinhamento do heatmap sobre a imagem. O teste `src/regions.spec.ts` só valida
 o shape — não trava a calibração.
+
+## Por que `src/assetUrls.ts` é gerado
+
+`resolveBodyImage` devolve a URL da imagem por lookup num mapa de `new URL(...)`
+**literais** (`scripts/gen-asset-urls.mjs`, roda no `prebuild`). Bundlers
+(Vite/Rollup) só emitem o asset e reescrevem o caminho quando a string do
+`new URL` é literal — `new URL(`./assets/${x}`)` com interpolação passa no dev
+e nos testes e **quebra no build de produção do consumidor**.

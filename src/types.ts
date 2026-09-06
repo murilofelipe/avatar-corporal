@@ -48,7 +48,15 @@ export type BodyRenderInput = {
   view?: BodyView;
 };
 
-/** Um foco de calor sobre a imagem. Coords normalizadas 0–1 (origem: topo-esquerda). */
+/**
+ * Um foco de calor sobre a imagem. Coords normalizadas 0–1 sobre a área da
+ * imagem, origem no topo-esquerda:
+ *   - `cx` e `radius` são frações da **largura**;
+ *   - `cy` é fração da **altura**.
+ * (A imagem base é 768×1024, mas o consumidor pode escalá-la — por isso é
+ * normalizado. Num container não-proporcional o foco vira elipse; se isso
+ * incomodar, o consumidor mantém o aspect ratio 3:4.)
+ */
 export type HeatmapSpot = {
   region: BodyRegion;
   cx: number;

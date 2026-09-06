@@ -1,6 +1,6 @@
 {
   "name": "avatar-corporal",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Resolução de imagem de composição corporal a partir de % de gordura + região dominante",
   "type": "module",
   "main": "./dist/index.js",
@@ -13,7 +13,9 @@
     },
     "./assets/*": "./dist/assets/*"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=20"
   },
@@ -21,7 +23,8 @@
     "build": "tsup && rm -rf dist/assets && cp -rT assets dist/assets",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prebuild": "node scripts/gen-asset-urls.mjs"
   },
   "devDependencies": {
     "tsup": "^8.3.5",

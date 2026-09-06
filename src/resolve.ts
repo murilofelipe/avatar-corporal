@@ -1,4 +1,5 @@
 import regionsData from "../assets/regions.json" with { type: "json" };
+import { ASSET_URL } from "./assetUrls.js";
 import { bucketFor } from "./buckets.js";
 import {
   BODY_VIEWS,
@@ -64,10 +65,10 @@ export function resolveBodyImage(input: BodyRenderInput): BodyRenderOutput {
   const bucket = bucketFor(input.bodyFatPercent);
 
   const file = `${gender}-${bucket}-${view}.webp`;
-  // Resolve relativo ao arquivo compilado (dist/index.js), ao lado do qual o
-  // build copia assets/ → dist/assets/. Em dev (src/) esse caminho não existe;
-  // os testes só conferem o sufixo da URL, não o arquivo.
-  const baseImageUrl = new URL(`./assets/${file}`, import.meta.url).href;
+  // Lookup num mapa de `new URL` LITERAIS (ver scripts/gen-asset-urls.mjs) — um
+  // `new URL(`./assets/${x}`)` com interpolação não é emitido pelo bundler do
+  // consumidor e a URL apontaria pro nada em produção.
+  const baseImageUrl = ASSET_URL[file] ?? "";
 
   const coords = regions[gender]?.[view] ?? {};
   return { baseImageUrl, heatmap: buildHeatmap(input.dominantRegions, coords) };
