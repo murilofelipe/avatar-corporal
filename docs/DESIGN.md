@@ -42,3 +42,11 @@ Sem novos assets por região; funciona em qualquer faixa de %G.
   imagens mostrar que falta distribuição.
 - Cálculo de %G e do ranking de regiões — fica no `fitness-web`.
 - CDN de assets — vão dentro do pacote.
+
+## Calibração do regions.json (issue #6)
+
+`assets/regions.json` está com **coordenadas placeholder**. A calibração real
+depende das 24 imagens finais (enquadramento fixo é pré-requisito). Quando
+chegarem: ajustar `cx/cy/radius` de cada região por gênero à mão, conferindo o
+alinhamento do heatmap sobre a imagem. O teste `src/regions.spec.ts` só valida
+o shape — não trava a calibração.
