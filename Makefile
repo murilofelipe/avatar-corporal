@@ -1,4 +1,4 @@
-.PHONY: build test typecheck check sync-agents hooks help
+.PHONY: build test typecheck check check-assets sync-agents hooks help
 
 help: ## Lista os alvos
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-14s\033[0m %s\n", $$1, $$2}'
@@ -14,6 +14,9 @@ typecheck: ## Checagem de tipos sem emitir
 
 check: ## Guards de agente (mesmos do pre-push) — sem Docker, segundos
 	@bash scripts/check-agent-assets.sh
+
+check-assets: ## Relatório informativo das 24 imagens base (nunca trava)
+	@python3 scripts/check-assets.py
 
 sync-agents: ## Regera os ponteiros .claude/ a partir do canônico .agents/
 	@bash scripts/sync-agent-skills.sh
