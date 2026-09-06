@@ -3,3 +3,6 @@ dist/
 *.log
 .DS_Store
 .reports/
+
+# folhas de contato cruas do GPT — fonte do slice-contact-sheet.py
+contact-sheet/
