@@ -1,6 +1,6 @@
 {
   "name": "avatar-corporal",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "description": "Resolução de imagem de composição corporal a partir de % de gordura + região dominante",
   "type": "module",
   "main": "./dist/index.js",
