@@ -1,12 +1,13 @@
 import regionsData from "../assets/regions.json" with { type: "json" };
 import { bucketFor } from "./buckets.js";
-import type {
-  BodyRegion,
-  BodyRenderInput,
-  BodyRenderOutput,
-  BodyView,
-  Gender,
-  HeatmapSpot,
+import {
+  BODY_VIEWS,
+  type BodyRegion,
+  type BodyRenderInput,
+  type BodyRenderOutput,
+  type BodyView,
+  type Gender,
+  type HeatmapSpot,
 } from "./types.js";
 
 const GENDERS: readonly Gender[] = ["male", "female", "neutral"];
@@ -27,6 +28,10 @@ const regions = regionsData as Record<
 
 function normalizeGender(gender: unknown): Gender {
   return GENDERS.includes(gender as Gender) ? (gender as Gender) : "neutral";
+}
+
+function normalizeView(view: unknown): BodyView {
+  return BODY_VIEWS.includes(view as BodyView) ? (view as BodyView) : DEFAULT_VIEW;
 }
 
 function buildHeatmap(
@@ -55,7 +60,7 @@ function buildHeatmap(
  */
 export function resolveBodyImage(input: BodyRenderInput): BodyRenderOutput {
   const gender = normalizeGender(input.gender);
-  const view = input.view ?? DEFAULT_VIEW;
+  const view = normalizeView(input.view);
   const bucket = bucketFor(input.bodyFatPercent);
 
   const file = `${gender}-${bucket}-${view}.webp`;

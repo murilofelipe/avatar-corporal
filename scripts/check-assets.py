@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Relatório informativo das imagens base do avatar-corporal.
 
-NÃO é gate: sai sempre com código 0. As 24 imagens chegam do dono, não do build
+NÃO é gate: sai sempre com código 0. As 96 imagens (3 gêneros × 8 faixas ×
+4 vistas) chegam do dono, não do build
 (ver AGENTS.md e script_relatorio_offline.md). Saída dupla: stdout + arquivo.
 
 Confere, para cada imagem esperada: presença, nome, formato WebP, dimensão
@@ -19,7 +20,7 @@ REPORT = ROOT / ".reports" / "check-assets.md"
 
 GENDERS = ["male", "female", "neutral"]
 BUCKETS = ["lt10", "10-15", "15-20", "20-25", "25-30", "30-35", "35-40", "gte40"]
-VIEWS = ["front"]
+VIEWS = ["front", "back", "side-left", "side-right"]
 EXPECTED_W, EXPECTED_H = 768, 1024
 
 EXPECTED = [
@@ -115,10 +116,10 @@ def build_report() -> str:
 
 
 def selftest() -> int:
-    assert len(EXPECTED) == 24, EXPECTED
-    assert len(set(EXPECTED)) == 24
+    assert len(EXPECTED) == 96, EXPECTED
+    assert len(set(EXPECTED)) == 96
     assert "male-25-30-front.webp" in EXPECTED
-    assert "neutral-gte40-front.webp" in EXPECTED
+    assert "neutral-gte40-side-right.webp" in EXPECTED
     r = build_report()  # não deve levantar exceção com assets/ só de placeholders
     assert "Placar:" in r
     print("selftest ok")

@@ -7,8 +7,16 @@
 
 export type Gender = "male" | "female" | "neutral";
 
-/** Só `front` no MVP. Lado/costas são fase 2. */
-export type BodyView = "front";
+/** Vistas disponíveis no banco de imagens. `side-left`/`side-right` = o corpo
+ * visto de perfil, virado para a esquerda / direita. */
+export type BodyView = "front" | "back" | "side-left" | "side-right";
+
+export const BODY_VIEWS: readonly BodyView[] = [
+  "front",
+  "back",
+  "side-left",
+  "side-right",
+] as const;
 
 /** Regiões com sinal de dobra cutânea própria no fitness-web. */
 export type BodyRegion =

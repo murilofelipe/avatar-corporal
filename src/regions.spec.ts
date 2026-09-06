@@ -1,12 +1,11 @@
 import { expect, test } from "vitest";
 import regions from "../assets/regions.json" with { type: "json" };
-import { BODY_REGIONS } from "./index.js";
+import { BODY_REGIONS, BODY_VIEWS } from "./index.js";
 
-// Só valida SHAPE. Os valores são placeholder até a calibração contra as 24
-// imagens reais (issue #6) — não assertar coordenada aqui.
+// Só valida SHAPE. Ajuste fino das coords é a issue #6 — não assertar valor aqui.
 
 const GENDERS = ["male", "female", "neutral"] as const;
-const VIEWS = ["front"] as const;
+const VIEWS = BODY_VIEWS;
 
 test.each(GENDERS)("%s tem todas as vistas e regiões", (gender) => {
   const byGender = (regions as Record<string, unknown>)[gender] as Record<
