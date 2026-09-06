@@ -1,10 +1,30 @@
-# Pedido das imagens base — avatar-corporal (MVP)
+# Pedido das imagens base — avatar-corporal
 
 Cole este documento no gerador de imagens (GPT/DALL·E ou equivalente). São
-**24 imagens**: 3 gêneros × 8 faixas de % de gordura × 1 vista (frente).
+**96 imagens**: 3 gêneros × 8 faixas de % de gordura × **4 vistas**
+(`front`, `back`, `side-left`, `side-right`).
 
-Depois de gerar, suba os arquivos em `assets/` com o nome exato da tabela e rode
-`make check-assets` (validação de nome, dimensão e canal alfa).
+O GPT costuma devolver **uma folha de contato por vista** (3 linhas gênero ×
+8 colunas faixa), com fundo transparente de verdade. Coloque as 4 folhas em
+`contact-sheet/` (`front.png`, `back.png`, `side-left.png`, `side-right.png`) e
+rode:
+
+```
+python3 scripts/slice-contact-sheet.py --all   # recorta as 4 → 96 webp em assets/
+make check-assets                              # valida nome, dimensão, alfa
+```
+
+## Vistas
+
+| id | o que é |
+|---|---|
+| `front` | de frente para a câmera |
+| `back` | de costas |
+| `side-left` | perfil, corpo virado para a **esquerda** da imagem |
+| `side-right` | perfil, corpo virado para a **direita** da imagem |
+
+**Mesma altura corporal e mesma linha de solo nas 4 vistas** — o heatmap se
+alinha por cima e usa coordenadas normalizadas por vista.
 
 ---
 
@@ -59,7 +79,11 @@ Depois de gerar, suba os arquivos em `assets/` com o nome exato da tabela e rode
 
 ---
 
-## Tabela das 24 imagens
+## Tabela das 24 imagens por vista
+
+A tabela abaixo lista os 24 arquivos da vista `front`. Para `back`,
+`side-left` e `side-right`, troque o sufixo `-front` pelo da vista
+(`male-30-35-back.webp`, `female-lt10-side-right.webp`, …) — 96 no total.
 
 | # | Arquivo | Gênero | Faixa |
 |---|---|---|---|

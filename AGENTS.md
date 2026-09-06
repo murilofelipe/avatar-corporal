@@ -28,13 +28,13 @@ futuramente `sition-web`, games).
 2. **`resolveBodyImage` é síncrona, determinística e sem trigonometria** — é
    lookup por faixa (`bucket(%G) × gender → arquivo`). Se você está escrevendo
    `Math.sin`, parou de seguir o design (ver `docs/DESIGN.md`).
-3. **A imagem é função só de `%G + gênero`.** Circunferências/dobras/peso não
-   deformam a silhueta — no MVP alimentam só o ranking do heatmap. Não invente
-   um segundo eixo sem story.
-4. **Enquadramento das 24 imagens é fixo** (mesma altura de ombro/quadril). O
+3. **A imagem é função só de `%G + gênero + vista`.** Circunferências/dobras/peso
+   não deformam a silhueta — alimentam só o ranking do heatmap. Não invente um
+   segundo eixo sem story.
+4. **Enquadramento das 96 imagens é fixo** (corpo em y 0.04–0.96 nas 4 vistas, mesma altura de ombro/quadril). O
    `regions.json` depende disso; se as imagens variarem o crop, o heatmap
    desalinha.
-5. **`check-assets` é informativo, nunca gate.** As 24 imagens chegam do dono,
+5. **`check-assets` é informativo, nunca gate.** As 96 imagens chegam do dono,
    não do build.
 6. **Nunca commitar direto em `main`/`develop`** — `make hooks`.
 
@@ -45,7 +45,7 @@ futuramente `sition-web`, games).
 | Vou mexer em… | Leia antes |
 |---|---|
 | Qualquer coisa | `docs/DESIGN.md` |
-| lookup / buckets | `src/lookup.ts` + `docs/DESIGN.md` §buckets |
+| lookup / buckets / vistas | `src/resolve.ts` + `src/buckets.ts` + `docs/DESIGN.md` |
 | heatmap / coords | `assets/regions.json` + issue #6 |
 | as imagens | `ASSETS_REQUEST.md` |
 

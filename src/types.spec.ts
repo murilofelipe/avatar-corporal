@@ -1,6 +1,11 @@
 import { expect, expectTypeOf, test } from "vitest";
-import { BODY_REGIONS } from "./index.js";
+import { BODY_REGIONS, BODY_VIEWS } from "./index.js";
 import type { BodyRenderInput, BodyRenderOutput, HeatmapSpot } from "./index.js";
+
+test("BODY_VIEWS: front + back + 2 lados, sem duplicata", () => {
+  expect(BODY_VIEWS).toEqual(["front", "back", "side-left", "side-right"]);
+  expect(new Set(BODY_VIEWS).size).toBe(BODY_VIEWS.length);
+});
 
 test("BODY_REGIONS cobre as 7 regiões, sem duplicata", () => {
   expect(BODY_REGIONS).toEqual([

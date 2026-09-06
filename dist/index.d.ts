@@ -5,8 +5,10 @@
  * dominantes; aqui só entra o `BodyRenderInput` pronto e sai o `BodyRenderOutput`.
  */
 type Gender = "male" | "female" | "neutral";
-/** Só `front` no MVP. Lado/costas são fase 2. */
-type BodyView = "front";
+/** Vistas disponíveis no banco de imagens. `side-left`/`side-right` = o corpo
+ * visto de perfil, virado para a esquerda / direita. */
+type BodyView = "front" | "back" | "side-left" | "side-right";
+declare const BODY_VIEWS: readonly BodyView[];
 /** Regiões com sinal de dobra cutânea própria no fitness-web. */
 type BodyRegion = "abdomen" | "waist" | "chest" | "hip" | "thigh" | "arm" | "back";
 declare const BODY_REGIONS: readonly BodyRegion[];
@@ -49,4 +51,4 @@ declare function bucketFor(bodyFatPercent: number): BucketId;
  */
 declare function resolveBodyImage(input: BodyRenderInput): BodyRenderOutput;
 
-export { BODY_REGIONS, BUCKET_IDS, type BodyRegion, type BodyRenderInput, type BodyRenderOutput, type BodyView, type BucketId, type Gender, type HeatmapSpot, bucketFor, resolveBodyImage };
+export { BODY_REGIONS, BODY_VIEWS, BUCKET_IDS, type BodyRegion, type BodyRenderInput, type BodyRenderOutput, type BodyView, type BucketId, type Gender, type HeatmapSpot, bucketFor, resolveBodyImage };
