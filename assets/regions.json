@@ -1,0 +1,36 @@
+{
+  "_comment": "PLACEHOLDER — coords normalizadas 0-1 (origem topo-esquerda), vista frente. Calibrar contra as 24 imagens reais na issue #6. Enquadramento fixo entre faixas é pré-requisito (ver AGENTS.md).",
+  "male": {
+    "front": {
+      "chest": { "cx": 0.5, "cy": 0.3, "radius": 0.16 },
+      "abdomen": { "cx": 0.5, "cy": 0.46, "radius": 0.15 },
+      "waist": { "cx": 0.5, "cy": 0.4, "radius": 0.14 },
+      "hip": { "cx": 0.5, "cy": 0.56, "radius": 0.16 },
+      "thigh": { "cx": 0.42, "cy": 0.68, "radius": 0.1 },
+      "arm": { "cx": 0.24, "cy": 0.36, "radius": 0.07 },
+      "back": { "cx": 0.5, "cy": 0.36, "radius": 0.16 }
+    }
+  },
+  "female": {
+    "front": {
+      "chest": { "cx": 0.5, "cy": 0.31, "radius": 0.15 },
+      "abdomen": { "cx": 0.5, "cy": 0.47, "radius": 0.14 },
+      "waist": { "cx": 0.5, "cy": 0.41, "radius": 0.12 },
+      "hip": { "cx": 0.5, "cy": 0.57, "radius": 0.18 },
+      "thigh": { "cx": 0.41, "cy": 0.69, "radius": 0.11 },
+      "arm": { "cx": 0.23, "cy": 0.37, "radius": 0.06 },
+      "back": { "cx": 0.5, "cy": 0.37, "radius": 0.16 }
+    }
+  },
+  "neutral": {
+    "front": {
+      "chest": { "cx": 0.5, "cy": 0.3, "radius": 0.15 },
+      "abdomen": { "cx": 0.5, "cy": 0.46, "radius": 0.15 },
+      "waist": { "cx": 0.5, "cy": 0.4, "radius": 0.13 },
+      "hip": { "cx": 0.5, "cy": 0.56, "radius": 0.17 },
+      "thigh": { "cx": 0.42, "cy": 0.68, "radius": 0.1 },
+      "arm": { "cx": 0.24, "cy": 0.36, "radius": 0.07 },
+      "back": { "cx": 0.5, "cy": 0.36, "radius": 0.16 }
+    }
+  }
+}
