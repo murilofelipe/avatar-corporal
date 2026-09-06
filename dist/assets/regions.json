@@ -1,0 +1,36 @@
+{
+  "_comment": "Coords normalizadas 0-1 (origem topo-esquerda), vista frente. Calibrado contra as 24 imagens fatiadas de 2026-09-06 (enquadramento fixo: corpo ocupa y 0.04-0.96). Ajuste fino pendente na issue #6.",
+  "male": {
+    "front": {
+      "chest": { "cx": 0.5, "cy": 0.31, "radius": 0.15 },
+      "abdomen": { "cx": 0.5, "cy": 0.45, "radius": 0.16 },
+      "waist": { "cx": 0.5, "cy": 0.4, "radius": 0.13 },
+      "hip": { "cx": 0.5, "cy": 0.51, "radius": 0.16 },
+      "thigh": { "cx": 0.42, "cy": 0.63, "radius": 0.1 },
+      "arm": { "cx": 0.27, "cy": 0.33, "radius": 0.06 },
+      "back": { "cx": 0.5, "cy": 0.33, "radius": 0.16 }
+    }
+  },
+  "female": {
+    "front": {
+      "chest": { "cx": 0.5, "cy": 0.31, "radius": 0.14 },
+      "abdomen": { "cx": 0.5, "cy": 0.45, "radius": 0.15 },
+      "waist": { "cx": 0.5, "cy": 0.39, "radius": 0.12 },
+      "hip": { "cx": 0.5, "cy": 0.53, "radius": 0.18 },
+      "thigh": { "cx": 0.41, "cy": 0.64, "radius": 0.11 },
+      "arm": { "cx": 0.26, "cy": 0.33, "radius": 0.06 },
+      "back": { "cx": 0.5, "cy": 0.34, "radius": 0.16 }
+    }
+  },
+  "neutral": {
+    "front": {
+      "chest": { "cx": 0.5, "cy": 0.31, "radius": 0.15 },
+      "abdomen": { "cx": 0.5, "cy": 0.45, "radius": 0.15 },
+      "waist": { "cx": 0.5, "cy": 0.4, "radius": 0.13 },
+      "hip": { "cx": 0.5, "cy": 0.52, "radius": 0.17 },
+      "thigh": { "cx": 0.42, "cy": 0.63, "radius": 0.1 },
+      "arm": { "cx": 0.27, "cy": 0.33, "radius": 0.06 },
+      "back": { "cx": 0.5, "cy": 0.33, "radius": 0.16 }
+    }
+  }
+}
