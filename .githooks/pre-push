@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+#
+# Recusa push direto para branches protegidas E reprova ponteiros de agente
+# fora de sincronia (.claude/ desatualizado em relação ao canônico .agents/).
+#
+# Por que existe: proteção de branch no GitHub exige plano Pro em repositório
+# privado, então este hook faz o guard-rail localmente. Merge para main deve
+# passar por PR (git-flow: feature -> develop -> main), porque o merge em main
+# costuma disparar deploy.
+#
+# Emergência (hotfix com produção quebrada): git push --no-verify
+
+set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+if ! bash "$ROOT/scripts/check-agent-assets.sh"; then
+	echo "✗ Push recusado: ative os guards de agente com 'make sync-agents' antes de tentar de novo." >&2
+	exit 1
+fi
+
+PROTECTED_BRANCHES="main"
+
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+	for branch in $PROTECTED_BRANCHES; do
+		if [ "$remote_ref" = "refs/heads/$branch" ]; then
+			cat >&2 <<-EOF
+
+			  ✗ Push direto para '$branch' recusado.
+
+			    '$branch' e protegida (costuma disparar deploy). Entregas entram por PR:
+			      1. git switch -c <tipo>/<descricao>
+			      2. git push -u origin <tipo>/<descricao>
+			      3. abra o PR com base em 'develop'
+
+			    Se você REALMENTE precisa (hotfix de produção): git push --no-verify
+
+			EOF
+			exit 1
+		fi
+	done
+done
+
+exit 0
